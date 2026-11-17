@@ -1,2 +1,17 @@
 # parabank-NETBY-
 Evaluación técnica - QA Automation
+## Requisitos
+Node 20+, npm, Chromium (npx playwright install), JMeter 5.6+ (solo para abrir/editar el .jmx).
+## Configuración
+cp .env.example .env  (completar PB_USER / PB_PASS)
+## Comandos
+npm ci · npx playwright test · npx playwright show-report
+## Estado por componente
+A ✅ casos/casos_de_prueba.csv · B ✅/⚠️ · C ✅/⚠️ · D ✅ (ver ejecución: <enlace>) ·
+E ✅ evidencias/informe_ejecucion.md · F ✅ .jmx entregado, NO ejecutado (por enunciado) · G ✅ descrito, no ejecutado
+## Limitaciones y obstáculos
+<solo lo real: demo caído, datos reseteados, reglas del enunciado que no coinciden, etc.>
+## Hallazgos
+Ver evidencias/informe_ejecucion.md
+## Nota
+Los datos del informe provienen de ejecuciones reales; los valores del análisis JMeter adicional son simulados, según el enunciado.
