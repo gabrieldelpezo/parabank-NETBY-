@@ -1,0 +1,11 @@
+ID,Escenario,Tipo,Precondiciones,Datos,Pasos,Resultado esperado,Prioridad,CA,Automatizar,Justificacion
+TC-01,Login con credenciales válidas,Positivo,Usuario demo existe,john/demo,"1 Abrir home; 2 Ingresar user y pass; 3 Login","Se muestra Accounts Overview",Alta,CA-1,Si,Prerrequisito de todo el flujo; estable y rápido
+TC-02,Pago válido,Positivo,Usuario logueado con cuenta,"Beneficiario válido; monto 10.00","1 Bill Pay; 2 Completar formulario; 3 Send Payment","Mensaje de pago completado con nombre y monto",Alta,CA-4,Si,Flujo central del negocio
+TC-03,Movimiento visible tras pago,Regresión,TC-02 ejecutado,Cuenta origen,"1 Accounts Overview; 2 Abrir cuenta; 3 Buscar movimiento","Existe transacción con el monto pagado",Alta,CA-4,Si,Valida trazabilidad del pago
+TC-04,Formulario con campos obligatorios vacíos,Negativo,Usuario logueado,Todos vacíos,"1 Bill Pay; 2 Send Payment sin llenar","Mensajes de campo requerido; no se procesa pago",Alta,CA-2 CA-5,Si,Regla de validación clave
+TC-05,Monto cero,Negativo/Límite,Usuario logueado,monto 0,"1 Llenar form; 2 Enviar","Rechazo o error; no es operación exitosa",Alta,CA-3 CA-5,Si,Comportamiento real puede diferir: documentar
+TC-06,Monto negativo,Negativo/Límite,Usuario logueado,monto -5,"idem","Rechazo; no exitoso",Alta,CA-3 CA-5,Si,Idem
+TC-07,Monto no numérico,Negativo,Usuario logueado,monto abc,"idem","Mensaje de monto inválido",Media,CA-3,No,Cubierto por TC-05/06; se deja manual
+TC-08,Verificación de cuenta distinta,Negativo,Usuario logueado,account 123 / verify 456,"idem","Error de coincidencia",Media,CA-2,Si,Regla del formulario
+TC-09,Acceso a billpay sin sesión,Seguridad,Sin sesión,URL directa,"Abrir /billpay.htm","Redirige a login / no permite pagar",Alta,CA-1,Si,Riesgo de seguridad
+TC-10,Pago mayor al saldo,Negativo,Saldo conocido,monto > saldo,"idem","Debe rechazarse (o documentar si se acepta)",Media,CA-5,No,Altera saldo del demo; se ejecuta manual
